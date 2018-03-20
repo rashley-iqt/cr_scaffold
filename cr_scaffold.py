@@ -59,10 +59,12 @@ if __name__ == "__main__":
     print(sys.argv[1:])
     opts = parse_opts(sys.argv[1:]) #we don't need the script name
 
-    if not "name" in opts and not "n" in opts:
+    if "name" in opts :
+        name = opts["name"]
+    elif "n" in opts:
+        name = opts["n"]
+    else:
         raise KeyError("the name flag is required")
-
-    name = opts["name"] or opts["n"]
 
     directory = "./"
     if "directory" in opts:
